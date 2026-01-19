@@ -6,36 +6,28 @@ test.describe('GET user', () => {
   test.beforeAll('Создание пользователя', async ({ request }) => {
     const userApi = new UserApi(request);
 
-    const response = await userApi.createUser(config.getUser);
-
-    await expect(response).toBeOK();
+    await userApi.createUser(config.getUser);
   });
 
   test('GET undefined user', async ({ request }) => {
     const userApi = new UserApi(request);
 
-    const response = await userApi.getUser(config.undefinedUser);
-    const responseToJSON = await response.json();
+    const response = await userApi.getUndefinedUser(config.undefinedUser);
 
-    expect(response.status()).toBe(config.statusCodes.notFound);
-    expect(responseToJSON).toEqual(config.getUserError);
+    expect(response).toEqual(config.getUserError);
   });
 
   test('GET valid user', async ({ request }) => {
     const userApi = new UserApi(request);
 
-    const response = await userApi.getUser(config.getUser.username);
-    const responseToJSON = await response.json();
+    const response = await userApi.getValidUser(config.getUser.username);
 
-    expect(response.status()).toBe(config.statusCodes.success);
-    expect(responseToJSON).toEqual(config.getUser);
+    expect(response).toEqual(config.getUser);
   });
 
   test.afterAll('Удаление пользователя', async ({ request }) => {
     const userApi = new UserApi(request);
 
-    const response = await userApi.deleteUser(config.getUser.username);
-
-    await expect(response).toBeOK();
+    await userApi.deleteUser(config.getUser.username);
   });
 });

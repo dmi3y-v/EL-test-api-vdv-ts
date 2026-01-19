@@ -7,9 +7,8 @@ test.describe('POST user', () => {
     const userApi = new UserApi(request);
 
     const response = await userApi.createUser(config.postUser);
-    const responseToJSON = await response.json();
 
-    expect(response.status()).toBe(config.statusCodes.success);
-    expect(responseToJSON.message).toEqual(config.postUser.id.toString());
+    expect(response.code).toBe(config.statusCodes.success);
+    expect(response.message).toEqual(config.postUser.id.toString());
   });
 });

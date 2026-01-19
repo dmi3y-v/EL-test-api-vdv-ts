@@ -9,6 +9,8 @@ export type TUser = {
   userStatus: number;
 };
 
+export type TUserHeaders = { api_key: string };
+
 export type TCreateUserResponse = {
   code: number;
   type: string;
@@ -21,4 +23,8 @@ export type TGetUserError = {
   message: string;
 };
 
-export type TUserHeaders = { api_key: string };
+export type TDeleteUserResponse = {
+  code: number;
+  type: string;
+  message: string;
+};
