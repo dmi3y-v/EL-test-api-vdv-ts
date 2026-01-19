@@ -21,16 +21,4 @@ export type TGetUserError = {
   message: string;
 };
 
-export type TConfig = {
-  getUserError: TGetUserError;
-  validUser: TUser;
-  invalidUser: string;
-  statusCodes: {
-    success: 200;
-    notFound: 404;
-  };
-  baseUrl: string;
-  key: string;
-};
-
 export type TUserHeaders = { api_key: string };
