@@ -18,7 +18,7 @@ export const test = base.extend<MyFixtures>({
   },
   deleteUser: async ({ request }, use) => {
     const userApi = new UserApi(request);
-    await userApi.createUser(config.getUser);
+    await userApi.createUser(config.deleteUser);
 
     await use(userApi);
   },
