@@ -6,10 +6,6 @@ export type TConfig = {
   postUser: TUser;
   deleteUser: TUser;
   undefinedUser: string;
-  statusCodes: {
-    success: 200;
-    notFound: 404;
-  };
   baseUrl: string;
   key: string;
 };

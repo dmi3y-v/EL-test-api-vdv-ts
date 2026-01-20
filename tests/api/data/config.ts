@@ -33,10 +33,6 @@ export const config: TConfig = {
     userStatus: 0,
   },
   undefinedUser: 'invalidUser',
-  statusCodes: {
-    success: 200,
-    notFound: 404,
-  },
   baseUrl: 'https://petstore.swagger.io/v2/user',
   key: 'vdv',
 };

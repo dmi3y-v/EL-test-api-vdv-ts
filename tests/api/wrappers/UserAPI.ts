@@ -1,6 +1,7 @@
-import { APIRequestContext, APIResponse, expect } from '@playwright/test';
+import { APIRequestContext, expect } from '@playwright/test';
 import { TUser, TCreateUserResponse, TGetUserError, TDeleteUserResponse } from '../types/users';
 import { config } from '../data/config';
+import { statusCodes } from '../data/statusCodes';
 import { getUserHeaders } from '../data/getUserHeaders';
 
 export class UserApi {
@@ -10,7 +11,7 @@ export class UserApi {
     const response = await this.api.get(`${config.baseUrl}/${username}`, {
       headers: getUserHeaders(),
     });
-    expect(response.status()).toBe(config.statusCodes.success);
+    expect(response.status()).toBe(statusCodes.success);
     return response.json();
   }
 
@@ -18,7 +19,7 @@ export class UserApi {
     const response = await this.api.get(`${config.baseUrl}/${username}`, {
       headers: getUserHeaders(),
     });
-    expect(response.status()).toBe(config.statusCodes.notFound);
+    expect(response.status()).toBe(statusCodes.notFound);
     return response.json();
   }
 
@@ -27,7 +28,7 @@ export class UserApi {
       headers: getUserHeaders(),
       data: data,
     });
-    expect(response.status()).toBe(config.statusCodes.success);
+    expect(response.status()).toBe(statusCodes.success);
     return response.json();
   }
 
@@ -35,7 +36,7 @@ export class UserApi {
     const response = await this.api.delete(`${config.baseUrl}/${username}`, {
       headers: getUserHeaders(),
     });
-    expect(response.status()).toBe(config.statusCodes.success);
+    expect(response.status()).toBe(statusCodes.success);
     return response.json();
   }
 }
